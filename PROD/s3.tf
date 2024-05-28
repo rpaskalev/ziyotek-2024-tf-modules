@@ -1,4 +1,4 @@
 module "s3" {
-    source = "../MODULES/s3"
-    environment = "prod"
+  source      = "../MODULES/s3"
+  environment = "prod"
 }

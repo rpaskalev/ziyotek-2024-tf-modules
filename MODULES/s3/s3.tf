@@ -1,10 +1,10 @@
 
 locals {
-  bucket_name_suffix = "ziyotek-2024-bucket"
+  bucket_name_suffix = "ziyotek-bucket-2030"
 }
 
 resource "aws_s3_bucket" "iqies_my_first_resourse" {
-  bucket = "${var.environment}-${local.bucket_name_suffix}-reports"
+  bucket = "${var.environment}-${local.bucket_name_suffix}-ferdows"
 
   tags = {
     Name        = "ziyotek"
@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "iqies_my_first_resourse" {
 }
 
 resource "aws_s3_bucket" "iqies_my_first_resourse_1" {
-  bucket = "${var.environment}-${local.bucket_name_suffix}-measures"
+  bucket = "${var.environment}-${local.bucket_name_suffix}-ferdows"
 
   tags = {
     Name        = "ziyotek"

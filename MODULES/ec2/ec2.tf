@@ -11,7 +11,7 @@ resource "aws_instance" "web" {
   # iam_instance_profile = aws_iam_instance_profile.s3_profile.id
   ebs_optimized        = var.ebs_optimized
 
-  key_name      = "radostinpaskalev_key" 
+  key_name      = var.key_name 
   instance_type = var.instance_type
 
   # Security group must be declared in the network_interface_id block if we are adding that parameter.
