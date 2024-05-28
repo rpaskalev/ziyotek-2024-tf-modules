@@ -5,31 +5,31 @@ variable "allocated_storage" {
 }
 
 variable "db_name" {
-  description = "Initial database name."
+  description = "database name"
   type        = string
   default     = "ziyo"
 }
 
 variable "engine" {
-  description = "Database engine."
+  description = "Database engine"
   type        = string
   default     = "postgres"
 }
 
 variable "engine_version" {
-  description = "Database engine version."
+  description = "Database engine version"
   type        = string
   default     = "12.15"
 }
 
 variable "instance_class" {
-  description = "Instance type."
+  description = "Instance type"
   type        = string
   default     = "db.t3.micro"
 }
 
 variable "username" {
-  description = "Master username."
+  description = "myusername"
   type        = string
   default     = "aziza_user"
 }
@@ -41,7 +41,7 @@ variable "password_parameter_name" {
 }
 
 variable "parameter_group_name" {
-  description = "DB parameter group."
+  description = "DB parameter group"
   type        = string
   default     = "db.postgres12"
 }
@@ -53,25 +53,25 @@ variable "skip_final_snapshot" {
 }
 
 variable "db_subnet_group_name" {
-  description = "DB subnet group name."
+  description = "DB subnet group name"
   type        = string
   default     = "ziyo_sub_group"
 }
 
 variable "vpc_security_group_ids" {
-  description = "VPC security group IDs."
+  description = "VPC security group IDs"
   type        = list(string)
   default     = ["sg-0215ec9cd2d2b3dd7"]
 }
 
 variable "storage_type" {
-  description = "Storage type."
+  description = "Storage type"
   type        = string
   default     = "gp2"
 }
 
 variable "subnet_ids" {
-  description = "Subnet IDs."
+  description = "Subnet IDs"
   type        = list(string)
   default     = ["subnet-079b11557eeb24642", "subnet-06dc5a52e1cc5cbed"]
 }
