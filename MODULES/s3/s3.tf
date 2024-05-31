@@ -4,19 +4,33 @@ locals {
 }
 
 resource "aws_s3_bucket" "iqies_my_first_resourse" {
-  bucket = "${var.environment}-${local.bucket_name_suffix}-reports"
+  for_each = var.s3_buckets_map
+  bucket = "${var.environment}-${each.key}-reports"
 
   tags = {
     Name        = "ziyotek"
-    Environment = var.environment
+    Environment = "${var.environment}-${each.value}"
   }
 }
 
-resource "aws_s3_bucket" "iqies_my_first_resourse_1" {
-  bucket = "${var.environment}-${local.bucket_name_suffix}-measures"
+variable "s3_buckets_map" {
+  default = {
+    bucket_1_ziyo = "dev"
+    bucket_2_ziyo = "prod"
+  }
+}
 
+locals {
+  s3_prefix = var.environment
+  body      = "${local.s3_prefix}-ziyotek"
+}
+
+resource "aws_s3_bucket" "ziyo_bucket_gov" {
+  count         = var.environment == "prod" ? 2 : 3
+  bucket        = "${local.s3_prefix}-ziyotek-2023-spring-class-devops-${count.index}"
+  force_destroy = true
   tags = {
-    Name        = "ziyotek"
-    Environment = var.environment
+    Environment   = var.environment
+    Bucket_number = "${count.index}"
   }
 }

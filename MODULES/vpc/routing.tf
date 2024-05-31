@@ -1,12 +1,12 @@
 resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.my_vpc.id
+  vpc_id = aws_vpc.my_vpc[0].id
     tags = {
     Environment = var.environment
   }
 }
 
 resource "aws_route_table" "training" {
-  vpc_id = aws_vpc.my_vpc.id
+  vpc_id = aws_vpc.my_vpc[0].id
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.gw.id

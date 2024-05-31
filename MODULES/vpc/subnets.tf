@@ -1,5 +1,5 @@
 resource "aws_subnet" "my_subnet_1" {
-  vpc_id            = aws_vpc.my_vpc.id
+  vpc_id            = aws_vpc.my_vpc[0].id
   cidr_block        = var.subnet_1_cidr
   availability_zone = "us-east-1a"
 
@@ -10,7 +10,7 @@ resource "aws_subnet" "my_subnet_1" {
 }
 
 resource "aws_subnet" "my_subnet_2" {
-  vpc_id            = aws_vpc.my_vpc.id
+  vpc_id            = aws_vpc.my_vpc[0].id
   cidr_block        = var.subnet_2_cidr
   availability_zone = "us-east-1b"
 
@@ -21,7 +21,7 @@ resource "aws_subnet" "my_subnet_2" {
 }
 
 resource "aws_subnet" "my_subnet_3" {
-  vpc_id            = aws_vpc.my_vpc.id
+  vpc_id            = aws_vpc.my_vpc[0].id
   cidr_block        = var.subnet_3_cidr
   availability_zone = "us-east-1c"
 
@@ -35,7 +35,7 @@ resource "aws_security_group" "allow_all" {
   name        = "${var.environment}_allow_all"
   description = "Allow ALL inbound traffic in ${var.environment}"
   depends_on = [aws_vpc.my_vpc]
-  vpc_id      = aws_vpc.my_vpc.id
+  vpc_id      = aws_vpc.my_vpc[0].id
 
   ingress {
     description = "All from VPC"
