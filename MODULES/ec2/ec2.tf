@@ -1,6 +1,7 @@
 # #this resource will create a separate ec2 instance in th edefault VPC. It will error is a default VPC doesnt exist. 
 
 resource "aws_instance" "web" {
+  count = var.environment == "sbx" ? 1 : 0
   ami = data.aws_ami.example.image_id #var.ami_id
 
   subnet_id                   = var.vpc_subnet_for_ec2

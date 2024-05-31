@@ -1,7 +1,7 @@
-variable "vpc_cidr_block" {
-    type = string
-    nullable = false
-}
+# variable "vpc_cidr_block" {
+#     type = string
+#     nullable = false
+# }
 
 variable "subnet_1_cidr" {}
 
