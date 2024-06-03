@@ -1,69 +1,84 @@
-variable "rds_storage" {
-    type = number 
-    default = 10
+variable "allocated_storage" {
+  description = "Storage size"
+  type        = number
+  default     = 10
 }
 
-variable "rds_name" {
-    type = string
-    default = "ziyo"
-    nullable = false
+variable "db_name" {
+  description = "database name"
+  type        = string
+  default     = "ziyo"
 }
 
-variable "rds_engine" {
-    type = string
-    default = "postgres"
-    nullable = false
+variable "engine" {
+  description = "Database engine"
+  type        = string
+  default     = "postgres"
 }
 
-variable "rds_engine_version" {
-    type = string
-    default = "12.15"
-    nullable = false
+variable "engine_version" {
+  description = "Database engine version"
+  type        = string
+  default     = "12.15"
 }
 
-variable "rds_user" {
-    type = string
-    default = "ziyo_user"
-    nullable = false
+variable "instance_class" {
+  description = "Instance type"
+  type        = string
+  default     = "db.t3.micro"
 }
 
-# variable "rds_pass" {
-#     type = string
-#     default = aws_ssm_parameter.foo.value
-#     nullable = false
-# }
-
-variable "rds_pgm" {
-    type = string
-    default = "default.postgres12"
-    nullable = false
+variable "username" {
+  description = "myusername"
+  type        = string
+  default     = "aziza_user"
 }
 
-variable "rds_storage_type" {
-    type = string
-    default = "gp2"
-    nullable = false
+variable "password_parameter_name" {
+  description = "SSM parameter name for password."
+  type        = string
+  default     = "my_ssm_parameter_name"
 }
 
-variable "rds_instance_class" {
-    default = "db.t3.micro"
-    nullable = false
+variable "parameter_group_name" {
+  description = "DB parameter group"
+  type        = string
+  default     = "db.postgres12"
 }
 
-variable "rds_subnet_group" {
-    type = string
-    default = "ziyo_sub_group"
-    nullable = false
+variable "skip_final_snapshot" {
+  description = "Skip final snapshot on delete."
+  type        = bool
+  default     = true
 }
 
-variable "rds_ssm_name" {
-    type = string
-    default = "ziyo_2024_class_rds_pass"
-    nullable = false
+variable "db_subnet_group_name" {
+  description = "DB subnet group name"
+  type        = string
+  default     = "ziyo_sub_group"
 }
 
-variable "rds_ssm_type" {
-    type = string
-    default = "SecureString"
-    nullable = false
+variable "vpc_security_group_ids" {
+  description = "VPC security group IDs"
+  type        = list(string)
+  default     = ["sg-0215ec9cd2d2b3dd7"]
 }
+
+variable "storage_type" {
+  description = "Storage type"
+  type        = string
+  default     = "gp2"
+}
+
+variable "subnet_ids" {
+  description = "Subnet IDs"
+  type        = list(string)
+  default     = ["subnet-079b11557eeb24642", "subnet-06dc5a52e1cc5cbed"]
+}
+
+variable "environment" {
+  description = "The environment name."
+  type        = string
+  default     = "sbx"
+}
+
